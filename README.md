@@ -4,7 +4,7 @@
 [![Static Badge](https://img.shields.io/badge/标准对齐-GB%2FT%2036572--2018%20%7C%20GB%2FT%2042453--2023-blue)](https://github.com/Bo331/power-data-breach-literature)
 [![Static Badge](https://img.shields.io/badge/演练靶场-PowerRange%20%7C%20SG--ML%20%7C%20CyRaTrEx-brightgreen)](https://github.com/Bo331/power-data-breach-literature)
 
-本仓库致力于系统性解决**电力监控系统（工控/OT）及混合多云场景下，电力敏感数据泄露与越权控制攻击的自动化响应与有效性量化评估**问题。
+本仓库致力于系统性整理**电力监控系统（工控/OT）及混合多云场景下，电力敏感数据泄露与越权控制攻击的自动化响应与有效性量化评估**的文献与技术。
 
 仓内严格基于 12 篇国内外顶级学术文献、国家安全防护标准及最新 APT 组织攻击战术，对现有的**自动化响应工程实施技术**与**成效实证评估方法**进行了系统化的整理、汇编和总结。
 
