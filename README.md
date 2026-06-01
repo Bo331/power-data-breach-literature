@@ -1,9 +1,6 @@
-# ⚡ Awesome Power Data Security Response
+# 电力敏感数据泄露自动化响应文献集
 
-[![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
-
-> 精选的电力敏感数据泄露自动化响应技术文献集，涵盖多领域架构、靶场仿真方法及国家标准级性能评估指标。为撰写《实施方案资料集》和《有效性分析报告》提供结构化的核心映射矩阵。
+> 本仓库收录并整理了电力领域敏感数据泄露风险自动化响应技术的核心文献，涵盖多领域架构、靶场仿真方法及国家标准级性能评估指标。旨在为撰写《实施方案资料集》和《有效性分析报告》提供结构化的核心映射矩阵。
 
 ## 📑 目录 (Table of Contents)
 
