@@ -50,9 +50,36 @@
 
 ---
 
-## 🛠️ 技术背景与验证工具链
+## � 收录中外权威文献与标准映射矩阵
 
-本项目涉及的学术级与工业级核心安全验证技术包括：
-*   **PowerRange (Wattson + pandapower)**：用于电网“物理-网络”双向实时潮流反馈的碰撞测试床。
-*   **SG-ML 编译器**：基于 IEC 61850 标准一键变电站数字孪生沙箱快速重构技术。
-*   **CyRaTrEx 评估大纲**：用于多维遥测及四维黄金度量公式的定量打分大纲。
+为了便于同行及专家精准检索学术支撑源，本仓库收录的 12 篇核心文献与标准提取内容及报告支撑关系如下：
+
+### 1. 自动化防御架构与工业控制策略 (行业报告)
+
+| 文献名称 / 领域 | 核心方案与响应机制提取 | 🎯 最终研究报告支撑点 |
+| :--- | :--- | :--- |
+| **[CISA零信任成熟度模型(ZTMM)](https://www.cisa.gov/zero-trust-maturity-model)**<br/>*通用 / 架构* | 身份、设备、网络、应用、数据5大支柱；自动化与编排（SOAR）跨领域协同。 | 《实施方案资料集》第二部分：零信任与SOAR自动化剧本设计 |
+| **[SANS防御ICS七步法](https://www.cisa.gov/sites/default/files/publications/Seven%20Steps%20to%20Effectively%20Defend%20Industrial%20Control%20Systems_S508C.pdf)**<br/>*工业控制* | IT/OT边界隔离、应用白名单、安全远程访问、网络监控。 | 《分析报告》第1.2节：电力工控系统连续性与安全网关红线 |
+| **[DarkSide勒索软件防护实践](https://www.cisa.gov/news-events/cybersecurity-advisories/aa21-131a)**<br/>*IT/OT协同* | 勒索软件生命周期阻断、网段微隔离、离线备份与自动数据保护。 | 《分析报告》第1.1节：多云段与跨防区运维边界凭证泄露防范 |
+| **[乌克兰电网攻击分析报告](https://www.cisa.gov/news-events/ics-alerts/ir-alert-h-16-056-01)**<br/>*电力控制* | 攻击链：钓鱼 ➡️ VPN越权 ➡️ 断路器控制 ➡️ KillDisk擦除。响应缺陷分析。 | 《分析报告》第1.3节：乌克兰基辅电网停电攻击脆弱性解构 |
+| **[Industroyer协议漏洞利用分析](https://www.welivesecurity.com/2017/06/12/industroyer-biggest-threat-industrial-control-systems-since-stuxnet/)**<br/>*电力协议* | IEC 104, IEC 61850, OPC DA 等工业协议的深度伪造与控制状态机篡改。 | 《分析报告》第1.3节：协议级恶意控制与数据流遮蔽深度解构 |
+| **[Dragos OT网络安全年度回顾](https://www.dragos.com/year-in-review/)**<br/>*威胁态势* | 攻击者已掌握物理过程回路，不仅窃取数据更试图造成物理中断。 | 《分析报告》第1.1节：TAT25-95（SCADA配置转储）、波兰DER并网Wiper事件 |
+
+### 2. 仿真演练与数字孪生靶场方法 (学术论文)
+
+| 文献名称 / 领域 | 仿真与验证方法提取 | 🎯 最终研究报告支撑点 |
+| :--- | :--- | :--- |
+| **[CyRaTrEx 通用靶场大纲](https://scholar.google.com/scholar?q=A+Survey+of+Cyber+Range+Training+Exercise+Scenario+Design+and+Generation+Techniques)**<br/>*通用靶场* | Cyber Range 的场景描述、自动生成（IaC）和执行评估全生命周期（四维评估大纲）。 | 《实施方案资料集》第四部分 & 《分析报告》第三章：遥测评估大纲与定量打分 |
+| **[SG-ML 智能电网一键变靶场](https://scholar.google.com/scholar?q=Towards+Automated+Generation+of+Smart+Grid+Cyber+Range)**<br/>*智能电网* | Auto-SGCR 框架，基于 SCL（系统配置语言）自动化脚本快速重构包含电网拓扑的沙箱环境。 | 《实施方案资料集》第四部分 & 《分析报告》第二部分：变电站孪生沙箱快速重构 |
+| **[PowerRange 电力物理共仿真](https://scholar.google.com/scholar?q=PowerRange:+An+Immersive+Cyber+Range+for+Power+Grid+Operators)**<br/>*电力靶场* | Wattson网络引擎 + pandapower电网潮流引擎双向协同，支持物理潮流电压实时碰撞测试。 | 《实施方案资料集》第四部分 & 《分析报告》第二部分：物理潮流反馈碰撞测试床 |
+| **[公有云事件自动化响应](https://scholar.google.com/scholar?q=Research+on+automated+security+incident+management+in+public+cloud+environments)**<br/>*云安全* | 公有云环境下的自动化事件管理工作流与多源事件联动剧本（Playbook）。 | 《实施方案资料集》第一部分：多云运维与敏感数据流转检测机制 |
+
+### 3. 安全防护标准与性能评价规范 (国家标准)
+
+| 文献名称 / 领域 | 核心量化指标与合规红线提取 | 🎯 最终研究报告支撑点 |
+| :--- | :--- | :--- |
+| **[GB/T 36572-2018 电力监控系统安全防护导则](https://openstd.samr.gov.cn/bzgk/gb/std_list?p.p1=0&p.p90=urn%3Aiso%3Astd%3Agb%3At%3A36572)**<br/>*电力防护* | 生产控制大区与管理信息区严格横向隔离；认证失败自动断开连接；高阶告警即时处置。 | 《分析报告》第1.2节：电网高可用性及调度平稳运行“物理红线”限制 |
+| **[GB/T 42453-2023 工业控制系统信息安全防护评估规范](https://openstd.samr.gov.cn/bzgk/gb/std_list?p.p1=0&p.p90=urn%3Aiso%3Astd%3Agb%3At%3A42453)**<br/>*工控安全* | 安全事件检出率≥90%、误报率≤5%、策略配置审计冲突检测100%、紧急响应延迟≤5分钟。 | 《实施方案资料集》第三部分 & 《分析报告》第三章：国家标准级量化指标对齐 |
+
+---
+*Built with 💻 & ☕ for Power Data Security Research.*
