@@ -74,12 +74,12 @@ flowchart TB
 ```mermaid
 sequenceDiagram
     autonumber
-    participant DLP as DLP检测引擎 (数据支柱)
-    participant SOAR as SOAR自动化编排器 (编排中枢)
-    participant IAM as IAM身份服务器 (身份支柱)
-    participant SDN as 交换机/SDN控制器 (网络支柱)
-    participant EDR as 主机EDR代理 (设备支柱)
-    participant Admin as 安全审计员
+    participant DLP as "DLP检测引擎 (数据支柱)"
+    participant SOAR as "SOAR自动化编排器 (编排中枢)"
+    participant IAM as "IAM身份服务器 (身份支柱)"
+    participant SDN as "交换机/SDN控制器 (网络支柱)"
+    participant EDR as "主机EDR代理 (设备支柱)"
+    participant Admin as "安全审计员"
 
     DLP->>SOAR: 触发告警：运维主机外传电网敏感文件
     Note over SOAR: 激活 Playbook-04 (数据防泄露阻断剧本)
@@ -112,15 +112,15 @@ sequenceDiagram
 ```mermaid
 graph LR
     A[" 数据防泄露系统检测到异常外发 "] --> B{" 判断所在网络大区 "}
-    B -- " IT / 管理信息区 " --> C[" SOAR 全自动剧本 "]
+    B -->| IT / 管理信息区 | C[" SOAR 全自动剧本 "]
     C --> C1[" 身份挂起 + 网络物理阻断 "]
     
-    B -- " OT / 生产控制区 " --> D[" 电力弹性响应机制 "]
+    B -->| OT / 生产控制区 | D[" 电力弹性响应机制 "]
     D --> D1[" 流量带宽精细化限速 / 限制外传效率 "]
     D --> D2[" 自动捕获数据遥测与内存镜像留证 "]
     D --> D3[" 向控制室大屏弹出人工阻断确认按钮 "]
     
     D3 --> E{" 调度人员人工研判确认 "}
-    E -- " 确认属于恶意数据泄露 " --> F[" 一键下发物理设备与端口断开指令 "]
-    E -- " 属于紧急合理业务操作 " --> G[" 临时放行并生成安全审计特例日志 "]
+    E -->| 确认属于恶意数据泄露 | F[" 一键下发物理设备与端口断开指令 "]
+    E -->| 属于紧急合理业务操作 | G[" 临时放行并生成安全审计特例日志 "]
 ```

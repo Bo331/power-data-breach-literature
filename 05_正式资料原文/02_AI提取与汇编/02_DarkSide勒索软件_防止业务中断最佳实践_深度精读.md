@@ -12,24 +12,18 @@
 
 ```mermaid
 flowchart TD
-    subgraph IT_Network [" 1. 信息技术网络 IT Net "]
-        direction LR
-        A[" 泄露的 VPN 凭证 /<br/> 未启用 MFA "] -->|初始访问| B[" IT 内网横向移动 /<br/> 通过 RDP 维持控网权 "]
-        B -->|部署勒索软件| C[" Salsa20 / RSA 加密文件 /<br/> 大规模窃取敏感数据 "]
-        C -->|调度与计费瘫痪| D[" IT 系统下线 "]
-    end
+    A[" 泄露的 VPN 凭证 (未启用 MFA) "] -->|1. 初始访问| B[" IT 内网横向移动 (通过 RDP 维持控网权) "]
+    B -->|2. 部署勒索软件| C[" Salsa20 / RSA 加密本地文件 & 大规模泄取敏感数据 "]
+    C -->|3. 调度与计费系统瘫痪| D[" IT 办公系统下线 "]
+    D -->|4. 隐性业务依赖传导| E[" 运营安全决策 (网络切断) "]
+    E -->|5. 迫使物理停运| F[" SCADA 控制大区下线 & 管道输送物理中断 "]
 
-    subgraph Boundaries [" 2. 传导边界 "]
-        D -->|隐性业务依赖传导| E[" 运营者决策网络断连 "]
-    end
-
-    subgraph OT_Network [" 3. 运营技术网络 OT Net "]
-        E -->|迫使物理安全防御| F[" SCADA 控制大区下线 /<br/> 管道输送物理停运 "]
-    end
-
-    style IT_Network fill:#fdedec,stroke:#e74c3c,stroke-width:1.5px
-    style Boundaries fill:#fcf3cf,stroke:#f39c12,stroke-width:1.5px
-    style OT_Network fill:#ebf5fb,stroke:#3498db,stroke-width:1.5px
+    style A fill:#fdedec,stroke:#e74c3c,stroke-width:1.5px
+    style B fill:#fdedec,stroke:#e74c3c,stroke-width:1px
+    style C fill:#fdedec,stroke:#e74c3c,stroke-width:1px
+    style D fill:#fdedec,stroke:#e74c3c,stroke-width:1px
+    style E fill:#fcf3cf,stroke:#f39c12,stroke-width:1.5px
+    style F fill:#ebf5fb,stroke:#3498db,stroke-width:1.5px
 ```
 
 ### 关键攻击手法与防御对照 (MITRE ATT&CK v9)
@@ -61,7 +55,7 @@ flowchart TD
         OT --> Zone2[" RTU 采集区 <br/> Zone B "]
         OT --> Zone3[" 仪表测控区 <br/> Zone C "]
         
-        Zone1 <-.->|微隔离控制管道 /<br/> 只放行工控白名单协议| Zone2
+        Zone1 <-->|微隔离控制管道 /<br/> 只放行工控白名单协议| Zone2
     end
 
     style IT fill:#f9ebd2,stroke:#f39c12,stroke-width:1px
