@@ -86,7 +86,7 @@ flowchart TD
 ### 2. 安全响应“有效性”定量评估指标大纲 (Metrics Specification)
 大纲提炼了评估防御策略及自动化响应技术的 4 大黄金度量指标，**直接作为我们项目《分析报告》定量评估的理论大图纸**：
 
-$$Effective\_Score = f(\text{Detection\_Time}, \text{Containment\_Time}, \text{Asset\_Impact}, \text{False\_Alarm})$$
+$$\text{Effective Score} = f(\text{Detection Time}, \text{Containment Time}, \text{Asset Impact}, \text{False Alarm})$$
 
 *   **指标 1：检出时延（Detection Time / Speed）**：
     从敏感数据外泄行为发生，到态势感知系统（SIEM/DLP）成功识别、并上报威胁告警的绝对时间差。
