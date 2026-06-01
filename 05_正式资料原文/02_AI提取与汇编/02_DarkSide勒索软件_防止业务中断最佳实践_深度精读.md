@@ -11,19 +11,20 @@
 本通告的核心技术启示在于：**即便恶意代码没有直接侵入和感染工业控制网络（OT），IT 网络与运营网络在系统和业务上的隐性依赖，依然会导致灾难向物理边界传导，迫使生产和运行主动或被动全面停摆。**
 
 ```mermaid
-graph LR
-    subgraph IT_Network [信息技术网络 IT Net]
-        A[泄露的VPN凭证\n未启用MFA] -->|1. 初始访问| B[IT内网横向移动\n通过RDP维持控网权]
-        B -->|2. 部署勒索软件| C[Salsa20/RSA 加密本地文件\n大规模窃取敏感业务数据]
-        C -->|3. 调度与计费瘫痪| D[IT系统下线]
+flowchart TD
+    subgraph IT_Network [" 1. 信息技术网络 IT Net "]
+        direction LR
+        A[" 泄露的 VPN 凭证 /<br/> 未启用 MFA "] -->|初始访问| B[" IT 内网横向移动 /<br/> 通过 RDP 维持控网权 "]
+        B -->|部署勒索软件| C[" Salsa20 / RSA 加密文件 /<br/> 大规模窃取敏感数据 "]
+        C -->|调度与计费瘫痪| D[" IT 系统下线 "]
     end
 
-    subgraph Boundaries [传导边界]
-        D -->|4. 隐性业务依赖传导| E[运营者决策断连]
+    subgraph Boundaries [" 2. 传导边界 "]
+        D -->|隐性业务依赖传导| E[" 运营者决策网络断连 "]
     end
 
-    subgraph OT_Network [运营技术网络 OT Net]
-        E -->|5. 迫使物理物理停运| F[SCADA控制失效\n油气管道输送物理中断]
+    subgraph OT_Network [" 3. 运营技术网络 OT Net "]
+        E -->|迫使物理安全防御| F[" SCADA 控制大区下线 /<br/> 管道输送物理停运 "]
     end
 
     style IT_Network fill:#fdedec,stroke:#e74c3c,stroke-width:1.5px
@@ -49,18 +50,18 @@ graph LR
 ### 1. IT 与 OT 强网络分段（微分段边界隔离）
 
 ```mermaid
-graph TD
-    IT[IT 办公网络] -->|严禁直接通信| FW1[边界防火墙]
-    FW1 --> DMZ[中转 DMZ\n网闸/代理中转与协议单向清洗]
-    DMZ --> FW2[工控区边界防火墙]
-    FW2 --> OT[OT 工控控制网]
+flowchart TD
+    IT[" IT 办公网络 "] -->|严禁直接跨网通信| FW1[" 边界级防火墙 "]
+    FW1 --> DMZ[" 安全隔离区 DMZ <br/> 网闸/物理单向清洗代理 "]
+    DMZ --> FW2[" 工控边界防火墙 "]
+    FW2 --> OT[" OT 工控核心控制网 "]
     
-    subgraph OT_Logic_Zones [OT 逻辑分区]
-        OT --> Zone1[SCADA控制区\nZone A]
-        OT --> Zone2[RTU采集区\nZone B]
-        OT --> Zone3[低功耗仪表区\nZone C]
+    subgraph OT_Logic_Zones [" OT 逻辑安全分区 "]
+        OT --> Zone1[" SCADA 控制区 <br/> Zone A "]
+        OT --> Zone2[" RTU 采集区 <br/> Zone B "]
+        OT --> Zone3[" 仪表测控区 <br/> Zone C "]
         
-        Zone1 <-.->|微隔离通信控制管道\n只放行 IEC 104/61850 协议| Zone2
+        Zone1 <-.->|微隔离控制管道 /<br/> 只放行工控白名单协议| Zone2
     end
 
     style IT fill:#f9ebd2,stroke:#f39c12,stroke-width:1px
